@@ -248,7 +248,7 @@ module.exports = (function() {
       }
 
       return new SyntaxError(
-        message !== null ? message : `${buildMessage(expected, found)} Position ${posDetails.line}:${posDetails.column}`,
+        message !== null ? message : `${buildMessage(expected, found)} Position ln${posDetails.line} : col${posDetails.column}`,
         expected,
         found,
         pos,
