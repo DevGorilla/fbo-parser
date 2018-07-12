@@ -24,7 +24,7 @@ module.exports = (function() {
 
   peg$subclass(SyntaxError, Error);
 
-  function parse(input, log) {
+  function parse(input) {
     var options = arguments.length > 1 ? arguments[1] : {},
 
         peg$FAILED = {},
@@ -246,9 +246,9 @@ module.exports = (function() {
       if (expected !== null) {
         cleanupExpected(expected);
       }
-      if (log) console.log(`${posDetails.line}:${posDetails.column}`)
+
       return new SyntaxError(
-        message !== null ? message : buildMessage(expected, found),
+        message !== null ? message : buildMessage(expected, found) + `${posDetails.line}:${posDetails.column}`,
         expected,
         found,
         pos,
